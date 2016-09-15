@@ -73,8 +73,8 @@
     				function (response) {
     					alert('inside');
       				if (response && !response.error) {
-      					var data=JSON.parse(response);
-        				alert('hiiiiibye'+data+'='+data.count+'byee');
+      					
+        				alert('hiiiiibye'+JSON.parse(response));
       			}
     		}
 );
