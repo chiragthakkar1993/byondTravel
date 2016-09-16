@@ -110,7 +110,8 @@
 				var dataFBFriends=JSON.stringify(response);
 				alert('jsondata = '+dataFBFriends);
 				var dataFBFriendsString =JSON.parse(dataFBFriends);
-					alert('jsondatastr = '+dataFBFriendsString);
+					alert('jsondatastr = '+dataFBFriendsString.invitable_friends);
+					alert('jsondatastr2 = '+dataFBFriendsString.invitable_friends.data[0].name);
 	                     /*   var result_holder = document.getElementById('result_friends');
 	                        var friend_data = response.data.sort(sortMethod);
 	                        var results = '';
