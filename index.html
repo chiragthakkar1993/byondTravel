@@ -137,7 +137,7 @@
 		
 	                       var result_holder = document.getElementById('result_friends');
 	                        //var friend_data = response.data.sort(sortMethod);
-	                        var friend_data = dataFBFriendsString.sort(sortMethod);
+	                        var friend_data = dataFBFriendsString.data.sort(sortMethod);
 	                        var results = '';
 	                        for (var i = 0; i < friend_data.length; i++) {
 	                           	results += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' + friend_data[i].name + '</div>';
