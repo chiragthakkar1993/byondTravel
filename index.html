@@ -140,7 +140,7 @@
 	                        var friend_data = dataFBFriendsString.data.sort(sortMethod);
 	                        var results = '';
 	                        for (var i = 0; i < friend_data.length; i++) {
-	                           	results += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' + friend_data[i].name + '</div>';
+	                           	results += '<div><img src='+ friend_data[i].picture.data.url + '></div>';
                         	}
                         // and display them at our holder element
                         result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + results;
