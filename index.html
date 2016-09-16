@@ -51,7 +51,7 @@
   
   </style>
 </head>
-<body onLoad=login();">
+<body onLoad="checkLogin();">
 <div id="fb-root"></div>
 	<script type="text/javascript">
 
@@ -66,8 +66,23 @@
 		   });
 		};
 		// logs the user in the application and facebook
+		function checkLogin(){
+			alert('checkLogin');
+			FB.getLoginStatus(function(r){
+				 if(r.status === 'connected'){
+					//alert('already logged in and connected via facebook');
+					//$('#login-modal').modal('hide');
+					FB.logout(function(response) {
+						alert('Logged Out');
+					});
+					document.getElementById("modal-launcher").innerHTML="Login";
+				 }else{
+				 	$('#login-modal').modal('show');
+				 }
+			 });
+		}
 		function login(){
-			alert('hiii');
+			alert('Login');
 		/*	FB.api(
 			  "/me/friends",
     				function (response) {
@@ -77,26 +92,24 @@
 	      				}
     				}
 			);*/
-			FB.getLoginStatus(function(r){
+		/*	FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 						alert('already logged in and connected via facebook');
 						$('#login-modal').modal('hide');
 						document.getElementById("modal-launcher").innerHTML="Logout";
 					
 						
-				 }else{
-				 	$('#login-modal').modal('show');
-					FB.login(function(response) {
-						if(response.authResponse) {
-						  //if (response.perms)
-							$('#login-modal').modal('hide');
-							document.getElementById("modal-launcher").innerHTML="Logout";
-						} 
-						else {
+				 }else{*/
+				 	//$('#login-modal').modal('show');
+			FB.login(function(response) {
+				if(response.authResponse) {
+					 //if (response.perms)
+					$('#login-modal').modal('hide');
+					document.getElementById("modal-launcher").innerHTML="Logout";
+				} 
+				else {
 						
-						}
-				 },{scope:'email'}); // which data to access from user profile
-			 	}
+				}
 			});
 		}
 		// Load the SDK Asynchronously
@@ -127,7 +140,7 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item" id="nav_itemLI"><a id='modal-launcher' class="btn btn-primary btn-lg myButton" onClick="Login();" data-toggle="modal" data-target="#login-modal">Login</a></li></ul>
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item" id="nav_itemLI"><a id='modal-launcher' class="btn btn-primary btn-lg myButton" onClick="checkLogin();"  >Login</a></li></ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
                     </button>
