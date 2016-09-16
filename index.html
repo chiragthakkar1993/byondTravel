@@ -54,6 +54,11 @@
 <body onLoad="checkLoginOnLoad();">
 <div id="fb-root"></div>
 	<script type="text/javascript">
+		 function sortMethod(a, b) {
+		      var x = a.name.toLowerCase();
+            	      var y = b.name.toLowerCase();
+            	      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        	}
 
 		window.fbAsyncInit = function() {
 		   FB.init({
