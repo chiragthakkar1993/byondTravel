@@ -81,20 +81,20 @@
 			 if(r.status === 'connected'){
 					alert('already logged in and connected');
 					$('#login-modal').modal('hide');
-					document.getElementsByClassName("modal-launcher").innerHTML="Logout";
+					document.getElementById("modal-launcher").innerHTML="Logout";
 				
 					
 			 }else{
 				FB.login(function(response) {
 						if(response.authResponse) {
 					  //if (response.perms)
-							alert('Not Authorized!!!! Please provide access to your profile');
+							alert('already logged in.....');
 							$('#login-modal').modal('hide');
-							//document.getElementsByClassName("modal-launcher").innerHTML="Logout";
+							/	document.getElementById("modal-launcher").innerHTML="Logout";
 							
 							
 					} else {
-						alert('Invalid Credentials!!!!');
+					
 					}
 			 },{scope:'email'}); // which data to access from user profile
 		 }
