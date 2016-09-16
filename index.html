@@ -67,16 +67,16 @@
 		};
 		// logs the user in the application and facebook
 		function login(){
-		/*	alert('hiii');
+			alert('hiii');
 			FB.api(
 			  "/me/friends",
     				function (response) {
     					
-      				if (response && !response.error) {
-        				alert('hiiiiibye'+JSON.parse(response));
-      			}
-    		}
-);*/
+	      				if (response && !response.error) {
+	        				alert('hiiiiibye'+JSON.parse(response));
+	      				}
+    				}
+			);
 		FB.getLoginStatus(function(r){
 			 if(r.status === 'connected'){
 					alert('already logged in and connected');
