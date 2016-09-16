@@ -84,6 +84,15 @@
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 					document.getElementById("modal-launcher").innerHTML="Logout";
+					FB.api(
+					    "/me",
+					    function (response) {
+					      if (response && !response.error) {
+					      	alert('inside');
+					        alert('response = '+response);
+					      }
+					    }
+					);
 				 }else{
 				 	document.getElementById("modal-launcher").innerHTML="Login";
 				 }
