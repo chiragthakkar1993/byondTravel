@@ -88,7 +88,8 @@
 					    "/me",
 					    function (response) {
 					      if (response && !response.error) {
-					      	alert('inside');
+					      	var data=JSON.parse(response);
+					      	alert('inside'+data);
 					        alert('response = '+response);
 					      }
 					    }
