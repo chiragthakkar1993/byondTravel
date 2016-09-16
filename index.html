@@ -126,14 +126,13 @@
 		}
 		function displayFBFriends()
 		{
-			alert('inside display FB Friends...');
+			
 			FB.api('/me/invitable_friends','GET',{"fields":"name,picture"}, function(response) {
-				alert('data'+ response);
+				
 				var dataFBFriends=JSON.stringify(response);
-				alert('jsondata = '+dataFBFriends);
+				
 				var dataFBFriendsString =JSON.parse(dataFBFriends);
-				alert('dataFBFriendsString= '+dataFBFriendsString);
-				alert('dataFBFriendsStringlengthhhh= '+dataFBFriendsString.data.length);
+				
 		
 	                       var result_holder = document.getElementById('result_friends');
 	                        //var friend_data = response.data.sort(sortMethod);
