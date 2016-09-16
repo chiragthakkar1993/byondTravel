@@ -104,10 +104,11 @@
 		}
 		function displayFBFriends()
 		{
+		
 			alert('inside display FB Friends...');
-			FB.api('/me/friends', function(response) {
+			FB.api('/me/friends','GET',{"fields":"name,picture"}, function(response) {
 				alert('data'+ response);
-				dataFBFriends=JSON.stringify(response);
+				var dataFBFriends=JSON.stringify(response);
 				alert('jsondata = '+dataFBFriends);
 				var dataFBFriendsString =JSON.parse(dataFBFriends);
 	                        var result_holder = document.getElementById('result_friends');
