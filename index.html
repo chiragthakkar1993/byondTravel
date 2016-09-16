@@ -81,18 +81,16 @@
 			 if(r.status === 'connected'){
 					alert('already logged in and connected');
 					$('#login-modal').modal('hide');
-					document.getElementById("modal-launcher").style.visibility = "hidden";
-					document.getElementById("nav_itemLI").innerHTML += 
-    									'<label name="lblWelcomeUser" for="user">Welcome User</label>';
+					document.getElementById("modal-launcher").value= "Logout";
+					
 			 }else{
 				FB.login(function(response) {
 						if(response.authResponse) {
 					  //if (response.perms)
 							alert('welcome');
 							$('#login-modal').modal('hide');
-							document.getElementById("modal-launcher").style.visibility = "hidden";
-							document.getElementById("nav_itemLI").innerHTML += 
-    									'<label name="lblWelcomeUser" for="user">Welcome User</label>';
+							ddocument.getElementById("modal-launcher").value= "Logout";
+							
 							
 					} else {
 						alert('not connected');
