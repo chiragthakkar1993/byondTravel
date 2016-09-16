@@ -88,7 +88,8 @@
 				    function (response) {
 				      if (response && !response.error) {
 				      	data=JSON.stringify(response);
-				      	alert('inside getuserdata'+data+'='+data.name);
+				      	var dataString =JSON.parse(data);
+				      	alert('inside str getuserdata'+dataString+'='+dataString.name);
 					document.getElementById("lblUser").innerHTML="Welcome "+data.name;
 				      }
 				    }
