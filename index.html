@@ -67,7 +67,7 @@
 		};
 		// logs the user in the application and facebook
 		function login(){
-			alert('hiii');
+		/*	alert('hiii');
 			FB.api(
 			  "/me/friends",
     				function (response) {
@@ -76,24 +76,25 @@
         				alert('hiiiiibye'+JSON.parse(response));
       			}
     		}
-);
+);*/
 		FB.getLoginStatus(function(r){
 			 if(r.status === 'connected'){
 					alert('already logged in and connected');
 					$('#login-modal').modal('hide');
-					document.getElementById("modal-launcher").value= "Logout";
+					document.getElementsByClassName(""modal-launcher").innerHTML="Logout";
+				
 					
 			 }else{
 				FB.login(function(response) {
 						if(response.authResponse) {
 					  //if (response.perms)
-							alert('welcome');
+							alert('Not Authorized!!!! Please provide access to your profile');
 							$('#login-modal').modal('hide');
-							ddocument.getElementById("modal-launcher").value= "Logout";
+							//document.getElementsByClassName(""modal-launcher").innerHTML="Logout";
 							
 							
 					} else {
-						alert('not connected');
+						alert('Invalid Credentials!!!!');
 					}
 			 },{scope:'email'}); // which data to access from user profile
 		 }
