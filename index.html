@@ -79,16 +79,17 @@
 			);
 		FB.getLoginStatus(function(r){
 			 if(r.status === 'connected'){
-					alert('already logged in and connected');
+					alert('already logged in and connected via facebook');
 					$('#login-modal').modal('hide');
 					document.getElementById("modal-launcher").innerHTML="Logout";
 				
 					
 			 }else{
+			 	$('#login-modal').modal('show');
 				FB.login(function(response) {
 						if(response.authResponse) {
 					  //if (response.perms)
-							alert('already logged in.....');
+						
 							$('#login-modal').modal('hide');
 							document.getElementById("modal-launcher").innerHTML="Logout";
 							
@@ -128,7 +129,7 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item" id="nav_itemLI"><a id='modal-launcher' class="btn btn-primary btn-lg myButton" data-toggle="modal" data-target="#login-modal">Login</a></li></ul>
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item" id="nav_itemLI"><a id='modal-launcher' class="btn btn-primary btn-lg myButton" onClick="Login();" data-toggle="modal" data-target="#login-modal">Login</a></li></ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
                     </button>
