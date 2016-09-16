@@ -99,7 +99,8 @@
 			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
-				 	//var data=getUserData();
+				 	var data=getUserData();
+				 	alert('data on load'+data);
 					document.getElementById("modal-launcher").innerHTML="Logout";
 					document.getElementById("lblUser").innerHTML="Welcome";
 				
@@ -113,7 +114,8 @@
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
-					 //var data=getUserData();
+					 var data=getUserData();
+					 alert('data on load'+data);
 					$('#login-modal').modal('hide');
 					document.getElementById("lblUser").innerHTML="Welcome";
 					document.getElementById("modal-launcher").innerHTML="Logout";
