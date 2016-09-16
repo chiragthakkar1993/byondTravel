@@ -76,7 +76,8 @@
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 					FB.logout(function(response) {
-						alert('Logged Out');
+						//alert('Logged Out');
+						window.location.reload();
 						document.getElementById("lblUser").innerHTML="";
 					});
 					document.getElementById("modal-launcher").innerHTML="Login";
@@ -101,11 +102,25 @@
 			);	
 			return data;
 		}
+		function displayFBFriends()
+		{
+			FB.api('/me/friends', function(response) {
+                        var result_holder = document.getElementById('result_friends');
+                        var friend_data = response.data.sort(sortMethod);
+                        var results = '';
+                        for (var i = 0; i < friend_data.length; i++) {
+                           	results += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' + friend_data[i].name + '</div>';
+                        }
+                        // and display them at our holder element
+                        result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + results;
+                    });
+		}
 		function checkLoginOnLoad(){
 			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 				 	getUserData();
+				 	displayFBFriends();
 				 	document.getElementById("modal-launcher").innerHTML="Logout";
 				 }else{
 				 	document.getElementById("modal-launcher").innerHTML="Login";
@@ -121,6 +136,7 @@
 					
 					$('#login-modal').modal('hide');
 					getUserData();
+					displayFBFriends();
 					//document.getElementById("lblUser").innerHTML="Welcome";
 					document.getElementById("modal-launcher").innerHTML="Logout";
 				} 
@@ -187,15 +203,13 @@
             </div>
         </div>
     </div>
-
     <div class="mbr-arrow mbr-arrow-floating" aria-hidden="true"><a href="#features3-0"><i class="mbr-arrow-icon"></i></a></div>
-
 </section>
 
 <section class="mbr-cards mbr-section mbr-section-nopadding" id="features3-0" style="background-color: rgb(255, 255, 255);">
 
     
-
+<!--
     <div class="mbr-cards-row row">
         <div class="mbr-cards-col col-xs-12 col-lg-3" style="padding-top: 80px; padding-bottom: 80px;">
             <div class="container">
@@ -249,9 +263,11 @@
                 </div>
             </div>
         </div>
-        
-        
     </div>
+    
+    -->
+    <div id="result_friends"></div>
+
 </section>
 
 <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-2" style="background-color: rgb(50, 50, 50); padding-top: 1.75rem; padding-bottom: 1.75rem;">
