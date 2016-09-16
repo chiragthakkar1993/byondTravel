@@ -51,7 +51,7 @@
   
   </style>
 </head>
-<body>
+<body onLoad=login();">
 <div id="fb-root"></div>
 	<script type="text/javascript">
 
@@ -68,7 +68,7 @@
 		// logs the user in the application and facebook
 		function login(){
 			alert('hiii');
-			FB.api(
+		/*	FB.api(
 			  "/me/friends",
     				function (response) {
     					
@@ -76,30 +76,28 @@
 	        				alert('hiiiiibye'+JSON.parse(response));
 	      				}
     				}
-			);
-		FB.getLoginStatus(function(r){
-			 if(r.status === 'connected'){
-					alert('already logged in and connected via facebook');
-					$('#login-modal').modal('hide');
-					document.getElementById("modal-launcher").innerHTML="Logout";
-				
+			);*/
+			FB.getLoginStatus(function(r){
+				 if(r.status === 'connected'){
+						alert('already logged in and connected via facebook');
+						$('#login-modal').modal('hide');
+						document.getElementById("modal-launcher").innerHTML="Logout";
 					
-			 }else{
-			 	$('#login-modal').modal('show');
-				FB.login(function(response) {
-						if(response.authResponse) {
-					  //if (response.perms)
 						
+				 }else{
+				 	$('#login-modal').modal('show');
+					FB.login(function(response) {
+						if(response.authResponse) {
+						  //if (response.perms)
 							$('#login-modal').modal('hide');
 							document.getElementById("modal-launcher").innerHTML="Logout";
-							
-							
-					} else {
-					
-					}
-			 },{scope:'email'}); // which data to access from user profile
-		 }
-		});
+						} 
+						else {
+						
+						}
+				 },{scope:'email'}); // which data to access from user profile
+			 	}
+			});
 		}
 		// Load the SDK Asynchronously
 		(function() {
