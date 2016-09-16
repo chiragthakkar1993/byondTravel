@@ -105,7 +105,7 @@
 		function displayFBFriends()
 		{
 			alert('inside display FB Friends...');
-			FB.api('/me','GET',{"fields":"invitable_friends"}, function(response) {
+			FB.api('/me/invitable_friends','GET',{"fields":"name,picture"}, function(response) {
 				alert('data'+ response);
 				var dataFBFriends=JSON.stringify(response);
 				alert('jsondata = '+dataFBFriends);
