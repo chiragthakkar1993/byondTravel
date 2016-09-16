@@ -67,7 +67,7 @@
 		};
 		// logs the user in the application and facebook
 		function checkLogin(){
-			alert('checkLogin');
+			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 					FB.logout(function(response) {
@@ -80,7 +80,7 @@
 			 });
 		}
 		function checkLoginOnLoad(){
-			alert('checkLoginOnLoad');
+			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 					document.getElementById("modal-launcher").innerHTML="Logout";
@@ -90,7 +90,7 @@
 			 });
 		}
 		function login(){
-			alert('Login');
+			
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
