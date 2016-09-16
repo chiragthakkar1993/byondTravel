@@ -89,7 +89,7 @@
 				      if (response && !response.error) {
 				      	data=JSON.stringify(response);
 				      	alert('inside'+data);
-					
+					document.getElementById("lblUser").innerHTML="Welcome "+data.name;
 				      }
 				    }
 			);	
@@ -99,11 +99,8 @@
 			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
-				 	var data=getUserData();
-				 	alert('data on load'+data);
-					document.getElementById("modal-launcher").innerHTML="Logout";
-					document.getElementById("lblUser").innerHTML="Welcome";
-				
+				 	getUserData();
+				 	document.getElementById("modal-launcher").innerHTML="Logout";
 				 }else{
 				 	document.getElementById("modal-launcher").innerHTML="Login";
 				 }
@@ -114,10 +111,11 @@
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
-					 var data=getUserData();
-					 alert('data on load'+data);
+					
+					
 					$('#login-modal').modal('hide');
-					document.getElementById("lblUser").innerHTML="Welcome";
+					getUserData();
+					//document.getElementById("lblUser").innerHTML="Welcome";
 					document.getElementById("modal-launcher").innerHTML="Logout";
 				} 
 				else {
