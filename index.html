@@ -104,19 +104,20 @@
 		}
 		function displayFBFriends()
 		{
+			alert('inside display FB Friends...');
 			FB.api('/me/friends', function(response) {
-                        var result_holder = document.getElementById('result_friends');
-                        var friend_data = response.data.sort(sortMethod);
-                        var results = '';
-                        for (var i = 0; i < friend_data.length; i++) {
-                           	results += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' + friend_data[i].name + '</div>';
-                        }
+				alert('data'+ response);
+	                        var result_holder = document.getElementById('result_friends');
+	                        var friend_data = response.data.sort(sortMethod);
+	                        var results = '';
+	                        for (var i = 0; i < friend_data.length; i++) {
+	                           	results += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' + friend_data[i].name + '</div>';
+                        	}
                         // and display them at our holder element
                         result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + results;
                     });
 		}
 		function checkLoginOnLoad(){
-			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
 				 	getUserData();
@@ -132,8 +133,6 @@
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
-					
-					
 					$('#login-modal').modal('hide');
 					getUserData();
 					displayFBFriends();
