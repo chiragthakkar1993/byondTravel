@@ -81,25 +81,26 @@
 		}
 		function getUserData()
 		{
+			var data;
 			FB.api(
 				    "/me",
 				    function (response) {
 				      if (response && !response.error) {
-				      	var data=JSON.stringify(response);
+				      	data=JSON.stringify(response);
 				      	alert('inside'+data);
-					alert('response = '+response);
-					return data;
+					
 				      }
 				    }
 			);	
+			return data;
 		}
 		function checkLoginOnLoad(){
 			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
-				 	var data=getUserData();
+				 	//var data=getUserData();
 					document.getElementById("modal-launcher").innerHTML="Logout";
-					document.getElementById("lblUser").innerHTML="Welcome"+data.name;
+					document.getElementById("lblUser").innerHTML="Welcome";
 				
 				 }else{
 				 	document.getElementById("modal-launcher").innerHTML="Login";
@@ -111,9 +112,9 @@
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
-					 var data=getUserData();
+					 //var data=getUserData();
 					$('#login-modal').modal('hide');
-					document.getElementById("lblUser").innerHTML="Welcome"+data.name;
+					document.getElementById("lblUser").innerHTML="Welcome";
 					document.getElementById("modal-launcher").innerHTML="Logout";
 				} 
 				else {
