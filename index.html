@@ -97,7 +97,7 @@
 			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
-				 	var data=getUserData()
+				 	var data=getUserData();
 					document.getElementById("modal-launcher").innerHTML="Logout";
 					document.getElementById("lblUser").innerHTML="Welcome"+data.name;
 				
@@ -111,6 +111,7 @@
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
+					 var data=getUserData();
 					$('#login-modal').modal('hide');
 					document.getElementById("lblUser").innerHTML="Welcome"+data.name;
 					document.getElementById("modal-launcher").innerHTML="Logout";
