@@ -140,7 +140,7 @@
 	                        var friend_data = dataFBFriendsString.data.sort(sortMethod);
 	                        var results = '';
 	                        for (var i = 0; i < friend_data.length; i++) {
-	                           	results += '<div><img src='+ friend_data[i].picture.data.url + '></div>';
+	                           	results += '<div><img src='+ friend_data[i].picture.data.url + '>'+friend_data[i].name+'</div>';
                         	}
                         // and display them at our holder element
                         result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + results;
@@ -238,10 +238,12 @@
 <section class="mbr-cards mbr-section mbr-section-nopadding" id="features3-0" style="background-color: rgb(255, 255, 255);">
 
     
-<!--
+
     <div class="mbr-cards-row row">
         <div class="mbr-cards-col col-xs-12 col-lg-3" style="padding-top: 80px; padding-bottom: 80px;">
             <div class="container">
+            <div id="result_friends"></div>
+              <!--
               <div class="card cart-block">
                   <div class="card-img"><img src="assets/images/table.jpg" class="card-img-top"></div>
                   <div class="card-block">
@@ -290,12 +292,13 @@
                         <div class="card-btn"><a href="https://mobirise.com" class="btn btn-primary">MORE</a></div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
     
-    -->
-    <div id="result_friends"></div>
+    
+    
 
 </section>
 
