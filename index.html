@@ -79,21 +79,28 @@
 				 }
 			 });
 		}
+		function getUserData()
+		{
+			FB.api(
+				    "/me",
+				    function (response) {
+				      if (response && !response.error) {
+				      	var data=JSON.stringify(response);
+				      	alert('inside'+data);
+					alert('response = '+response);
+					return data;
+				      }
+				    }
+			);	
+		}
 		function checkLoginOnLoad(){
 			
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
+				 	var data=getUserData()
 					document.getElementById("modal-launcher").innerHTML="Logout";
-					FB.api(
-					    "/me",
-					    function (response) {
-					      if (response && !response.error) {
-					      	var data=JSON.stringify(response);
-					      	alert('inside'+data);
-					        alert('response = '+response);
-					      }
-					    }
-					);
+					document.getElementById("lblUser").innerHTML="Welcome"+data.name;
+				
 				 }else{
 				 	document.getElementById("modal-launcher").innerHTML="Login";
 				 }
@@ -105,6 +112,7 @@
 				if(response.authResponse) {
 					 //if (response.perms)
 					$('#login-modal').modal('hide');
+					document.getElementById("lblUser").innerHTML="Welcome"+data.name;
 					document.getElementById("modal-launcher").innerHTML="Logout";
 				} 
 				else {
@@ -140,7 +148,7 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item" id="nav_itemLI"><Label style="position: relative;top: 18px;right: 20px;color:#fff" for="welcomeUser">Hi</label></li><li class="nav-item" id="nav_itemLI"><a id='modal-launcher' class="btn btn-primary btn-lg myButton" onClick="checkLogin();"  >Login</a></li></ul>
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item" id="nav_itemLI"><Label id="lblUser" style="position: relative;top: 18px;right: 20px;color:#fff" for="welcomeUser">Hi</label></li><li class="nav-item" id="nav_itemLI"><a id='modal-launcher' class="btn btn-primary btn-lg myButton" onClick="checkLogin();"  >Login</a></li></ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
                     </button>
