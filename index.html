@@ -51,7 +51,7 @@
   
   </style>
 </head>
-<body onLoad="checkLogin();">
+<body onLoad="checkLoginOnLoad();">
 <div id="fb-root"></div>
 	<script type="text/javascript">
 
@@ -70,8 +70,6 @@
 			alert('checkLogin');
 			FB.getLoginStatus(function(r){
 				 if(r.status === 'connected'){
-					//alert('already logged in and connected via facebook');
-					//$('#login-modal').modal('hide');
 					FB.logout(function(response) {
 						alert('Logged Out');
 					});
@@ -81,26 +79,18 @@
 				 }
 			 });
 		}
+		function checkLoginOnLoad(){
+			alert('checkLoginOnLoad');
+			FB.getLoginStatus(function(r){
+				 if(r.status === 'connected'){
+					document.getElementById("modal-launcher").innerHTML="Logout";
+				 }else{
+				 	document.getElementById("modal-launcher").innerHTML="Login";
+				 }
+			 });
+		}
 		function login(){
 			alert('Login');
-		/*	FB.api(
-			  "/me/friends",
-    				function (response) {
-    					
-	      				if (response && !response.error) {
-	        				alert('hiiiiibye'+JSON.parse(response));
-	      				}
-    				}
-			);*/
-		/*	FB.getLoginStatus(function(r){
-				 if(r.status === 'connected'){
-						alert('already logged in and connected via facebook');
-						$('#login-modal').modal('hide');
-						document.getElementById("modal-launcher").innerHTML="Logout";
-					
-						
-				 }else{*/
-				 	//$('#login-modal').modal('show');
 			FB.login(function(response) {
 				if(response.authResponse) {
 					 //if (response.perms)
